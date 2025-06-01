@@ -1,0 +1,3 @@
+sudo rm /usr/lib/python3.11/EXTERNALLY-MANAGED
+pip3 install --upgrade thonny
+pip install numpy==1.24.4
