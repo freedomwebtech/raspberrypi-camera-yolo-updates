@@ -5,7 +5,7 @@ from picamera2 import Picamera2
 import time
 
 # Load YOLOv8 model
-model = YOLO('best.pt')
+model = YOLO('')
 names = model.names
 
 # Initialize Picamera2
@@ -17,13 +17,6 @@ picam2.configure("preview")
 picam2.start()
 time.sleep(2)  # Let camera warm up
 
-# Debug mouse position
-def RGB(event, x, y, flags, param):
-    if event == cv2.EVENT_MOUSEMOVE:
-        print(f"Mouse moved to: [{x}, {y}]")
-
-cv2.namedWindow("RGB")
-cv2.setMouseCallback("RGB", RGB)
 
 frame_count = 0
 
@@ -54,7 +47,7 @@ while True:
             cv2.putText(frame, f"{label} ID:{track_id}", (x1, y1 - 10),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 0, 255), 2)
 
-    cv2.imshow("RGB", frame)
+    cv2.imshow("FRAME", frame)
 
     # Press ESC to exit
     if cv2.waitKey(1) & 0xFF == 27:
